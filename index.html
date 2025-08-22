@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Time.com Stories</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Latest Stories from Time.com</h1>
+  <button id="loadBtn">Load Stories</button>
+  <div id="stories"></div>
+
+  <script>
+    const loadBtn = document.getElementById("loadBtn");
+    const storiesDiv = document.getElementById("stories");
+
+    loadBtn.onclick = () => {
+      storiesDiv.innerHTML = "Loading...";
+      fetch("http://localhost:3000/stories")
+        .then(res => res.json())
+        .then(stories => {
+          storiesDiv.innerHTML = "";
+          stories.forEach(story => {
+            const a = document.createElement("a");
+            a.href = story.url;
+            a.target = "_blank";
+            a.textContent = story.title;
+            storiesDiv.appendChild(a);
+            storiesDiv.appendChild(document.createElement("br"));
+          });
+        })
+        .catch(err => {
+          storiesDiv.innerHTML = "Failed to load stories";
+          console.error(err);
+        });
+    };
+  </script>
+</body>
+</html>

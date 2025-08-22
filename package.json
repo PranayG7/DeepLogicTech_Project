@@ -1,0 +1,20 @@
+{
+  "name": "time-scraper",
+  "version": "1.0.0",
+  "description": "API to get latest stories from Time.com",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "time.com",
+    "api",
+    "scraper"
+  ],
+  "author": "You",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0",
+    "fast-xml-parser": "^5.2.5"
+  }
+}
